@@ -1,11 +1,11 @@
 # ETFdb.com API
-Fetches data of all 3114 ETFs listed on [ETFdb.com](ETFdb.com)
+Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
 
 Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
 
 # Quick Start
 ```javascript
-const etfdb = require('./index');
+const etfdb = require('etfdb-api');
 
 etfdb.getData({limit: 50, offset: 0}).then(result => {
   console.log('Total ETFs:', result.total);
