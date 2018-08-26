@@ -3,11 +3,12 @@ Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
 
 Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
 
-# Quick Start
+# Example
 ```javascript
 const etfdb = require('etfdb-api');
 
-etfdb.getData({limit: 50, offset: 0}).then(result => {
+etfdb.getData(limit=50, offset=0, sort='ytd_percent_return', order='desc')
+  .then(result => {
   console.log('Total ETFs:', result.total);
   console.log('Returned ETFs:', result.rows.length);
 
