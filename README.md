@@ -90,10 +90,13 @@ Use Postman or `curl`.
 
 
 URL: https://etfdb.com/api/screener/
+
 Method: POST
+
 Headers:
  - Content-Type: application/json
  - User-Agent: Your User Agent
+
 Payload:
 ```json
 {
