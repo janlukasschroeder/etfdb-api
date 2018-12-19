@@ -1,11 +1,10 @@
 const etfdb = require('./index');
 
-etfdb.getData(limit=50, offset=0, sort='ytd_percent_return', order='desc')
+etfdb.getData(perPage=50, page=1, sort='ytd', order='desc')
   .then(result => {
-  console.log('Total ETFs:', result.total);
-  console.log('Returned ETFs:', result.rows.length);
+    console.log('Total ETFs:', result.meta.total_records);
 
-  result.rows.forEach(row => {
-    console.log(row._ytd_percent_return_data.th, row.ytd_percent_return);
-  })
-});
+    result.data.forEach(etf => {
+      console.log(etf.symbol.text, etf.ytd);
+    })
+  }).catch(err => console.log(err));

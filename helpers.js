@@ -1,21 +1,21 @@
 const request = require('request');
 
-/**
- * HTTPS GET API
- * resolve returns JSON-parsed response
- *
- * @param query
- * @returns {Promise}
- */
-module.exports.fetch = (query) => {
-  return new Promise((resolve, reject) => {
-    request(query, (error, response, body) => {
-      try {
-        resolve(JSON.parse(body));
+
+module.exports.fetch = (url = ``, payload = null) => {
+  const options = {
+    url,
+    method: 'POST',
+    "User-Agent": 'Mozilla/4.2 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+    body: payload,
+    json: true
+  };
+
+  return new Promise((res, rej) => {
+    request.post(options, (err, response, body) => {
+      if (err) {
+        return rej(err)
       }
-      catch (err) {
-        reject(err);
-      }
-    });
-  });
+      res(body)
+    })
+  })
 };

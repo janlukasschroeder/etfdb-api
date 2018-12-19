@@ -2,26 +2,31 @@ const h = require('./helpers');
 const config = require('./config');
 
 /**
- * Get ETFdb data
- * @param limit
- * @param offset
- * @param sort
- * @param order
- * @returns {Promise}
+ * List all ETFs. Manipulate the order by using parameters.
+ * @param {number} [perPage=25]
+ * @param {number} [page=1]
+ * @param {string} [sort='ytd']
+ * @param {string} [order='desc']
  */
-module.exports.getData = (limit=25,
-                          offset=0,
-                          sort='ytd_percent_return',
+module.exports.getData = (perPage=25,
+                          page = 1,
+                          sort='ytd',
                           order='desc') => {
 
-  const path = `data_set/?tm=1885&no_null_sort=true&` +
-                `count_by_id=&` +
-                `sort=${sort}&` +
-                `order=${order}&` +
-                `limit=${limit}&` +
-                `offset=${offset}`;
+  const path = `api/screener/`;
 
-  const query = config.etfdb.baseUrl + path;
+  const body = {
+    "page": page,
+    "per_page": perPage,
+    "sort_by": sort,
+    "sort_direction": order,
+    "only": [
+      "meta",
+      "data"
+    ]
+  };
 
-  return h.fetch(query);
+  const url = config.etfdb.baseUrl + path;
+
+  return h.fetch(url, body);
 };
