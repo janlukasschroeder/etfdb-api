@@ -83,3 +83,27 @@ etfdb.getData(perPage=50, page=1, sort='ytd', order='desc')
     ]
 }
 ```
+
+
+## Raw API Query
+Use Postman or `curl`.
+
+
+URL: https://etfdb.com/api/screener/
+Method: POST
+Headers:
+ - Content-Type: application/json
+ - User-Agent: Your User Agent
+Payload:
+```json
+{
+    "page": 2,
+    "per_page": 25,
+    "sort_by": "ytd",
+    "sort_direction": "desc",
+    "only": [
+        "meta",
+        "data"
+    ]
+}
+```
