@@ -97,7 +97,8 @@ Headers:
  - Content-Type: application/json
  - User-Agent: Your User Agent
 
-Payload:
+### Payload Examples
+#### Sort by `Year to Date`, order direction `DESC`
 ```json
 {
     "page": 2,
@@ -109,4 +110,36 @@ Payload:
         "data"
     ]
 }
+```
+
+#### Show Returns
+```json
+{
+    "page": 2,
+    "only": [
+        "meta",
+        "data"
+    ],
+    "tab": "returns"
+}
+```
+
+#### Fund Flows
+```json
+"tab": "fund-flows"
+```
+
+#### Expenses
+```json
+"tab": "returns"
+```
+
+#### Dividends
+```json
+"tab": "dividends"
+```
+
+#### Holdings
+```json
+"tab": "holdings"
 ```
