@@ -1,8 +1,8 @@
 # ETFdb.com API
 
-Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
-
-Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
+- Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
+- Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
+- Holdings of individual ETFs
 
 ## Example Script
 
