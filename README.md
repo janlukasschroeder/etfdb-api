@@ -1,23 +1,31 @@
 # ETFdb.com API
+
 Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
 
 Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
 
 ## Example Script
+
 ```javascript
 const etfdb = require('etfdb-api');
 
-etfdb.getData(perPage=50, page=1, sort='ytd', order='desc')
+// list all ETFs, sorted by year-to-date return, descending sort direction
+etfdb
+  .getData((perPage = 50), (page = 1), (sort = 'ytd'), (order = 'desc'))
   .then(result => {
     console.log('Total ETFs:', result.meta.total_records);
+    result.data.forEach(etf => console.log(etf.symbol.text, etf.ytd));
+  });
 
-    result.data.forEach(etf => {
-      console.log(etf.symbol.text, etf.ytd);
-    })
-  }).catch(err => console.log(err));
+// show first 15 holdings of TQQQ, sorted by weighting (DESC)
+etfdb.listHoldings('TQQQ').then(holdings => console.log(holdings));
+
+// page 3 of TQQQ holdings
+etfdb.listHoldings('TQQQ', 3).then(holdings => console.log(holdings));
 ```
 
 ## Example Response
+
 ```json
 {
     "meta": {
@@ -84,62 +92,63 @@ etfdb.getData(perPage=50, page=1, sort='ytd', order='desc')
 }
 ```
 
-
 ## Raw API Query
-Use Postman or `curl`.
 
+Use Postman or `curl`.
 
 URL: https://etfdb.com/api/screener/
 
 Method: POST
 
 Headers:
- - Content-Type: application/json
- - User-Agent: Your User Agent
+
+- Content-Type: application/json
+- User-Agent: Your User Agent
 
 ### Payload Examples
+
 #### Sort by `Year to Date`, order direction `DESC`
+
 ```json
 {
-    "page": 2,
-    "per_page": 25,
-    "sort_by": "ytd",
-    "sort_direction": "desc",
-    "only": [
-        "meta",
-        "data"
-    ]
+  "page": 2,
+  "per_page": 25,
+  "sort_by": "ytd",
+  "sort_direction": "desc",
+  "only": ["meta", "data"]
 }
 ```
 
 #### Show Returns
+
 ```json
 {
-    "page": 2,
-    "only": [
-        "meta",
-        "data"
-    ],
-    "tab": "returns"
+  "page": 2,
+  "only": ["meta", "data"],
+  "tab": "returns"
 }
 ```
 
 #### Fund Flows
+
 ```json
 "tab": "fund-flows"
 ```
 
 #### Expenses
+
 ```json
 "tab": "returns"
 ```
 
 #### Dividends
+
 ```json
 "tab": "dividends"
 ```
 
 #### Holdings
+
 ```json
 "tab": "holdings"
 ```

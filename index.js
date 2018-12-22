@@ -8,13 +8,13 @@ const config = require('./config');
  * @param {string} [sort='ytd']
  * @param {string} [order='desc']
  */
-module.exports.getData = (
+module.exports.listEtfs = (
   perPage = 25,
   page = 1,
   sort = 'ytd',
   order = 'desc'
 ) => {
-  const path = `api/screener/`;
+  const url = `https://etfdb.com/api/screener/`;
 
   const body = {
     page: page,
@@ -24,9 +24,21 @@ module.exports.getData = (
     only: ['meta', 'data']
   };
 
-  const url = config.etfdb.baseUrl + path;
+  return h.fetch(url, 'POST', body);
+};
 
-  return h.fetch(url, body);
+module.exports.getFundamentals = () => {};
+
+/**
+ * List holdings of individual ETF
+ * @param symbol
+ * @param page
+ * @param perPage
+ */
+module.exports.listHoldings = (symbol, page = 0, perPage = 15) => {
+  const url =
+    config.baseUrl + `/listHoldings/${symbol}?page=${page}&perPage=${perPage}`;
+  return h.fetch(url);
 };
 
 /**

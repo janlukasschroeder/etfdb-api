@@ -1,5 +1,3 @@
 module.exports = {
-  etfdb: {
-    baseUrl: 'https://etfdb.com/'
-  }
+  baseUrl: 'https://finance-hub.herokuapp.com/etfdb'
 };

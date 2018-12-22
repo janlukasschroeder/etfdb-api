@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/janlukasschroeder/etfdb-api#readme",
   "dependencies": {
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "x-ray": "^2.3.3"
   }
 }
