@@ -11,7 +11,7 @@ const etfdb = require('etfdb-api');
 
 // list all ETFs, sorted by year-to-date return, descending sort direction
 etfdb
-  .getData((perPage = 50), (page = 1), (sort = 'ytd'), (order = 'desc'))
+  .listEtfs((perPage = 50), (page = 1), (sort = 'ytd'), (order = 'desc'))
   .then(result => {
     console.log('Total ETFs:', result.meta.total_records);
     result.data.forEach(etf => console.log(etf.symbol.text, etf.ytd));
