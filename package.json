@@ -1,6 +1,6 @@
 {
   "name": "etfdb-api",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "ETFdb.com API",
   "main": "index.js",
   "scripts": {
