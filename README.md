@@ -1,10 +1,18 @@
-# ETFdb.com API
+# ETFdb.com API (React, Vue, Angular, Node.js)
 
 - Fetches data of all 3114 ETFs listed on [ETFdb.com](https://www.ETFdb.com)
 - Indicators: returns (YTD, 1-week, etc.), AUM, expense ratio, dividend yield, 3-month avg. volume, price, etc.
 - Holdings of individual ETFs
+- Supports client-side (React, React Native, Vue, Angular, Cordova, Ionic, etc.),
+  and server-side (Node.js)
 
-## Example Script
+# Getting Started
+
+- `npm install etfdb-api`
+
+# Examples
+
+## Node.js
 
 ```javascript
 const etfdb = require('etfdb-api');
@@ -24,7 +32,26 @@ etfdb.listHoldings('TQQQ').then(holdings => console.log(holdings));
 etfdb.listHoldings('TQQQ', 3).then(holdings => console.log(holdings));
 ```
 
-## Example Response
+## React
+
+Live Demo: https://codesandbox.io/s/mpxy95mvx
+
+```js
+import api from 'etfdb-api';
+
+class Eodhistoricaldata extends React.Component {
+  componentDidMount() {
+    api.listHoldings('VGT').then(data => this.setState({ data }));
+  }
+
+  render() {
+    // ...
+    return <pre>{JSON.stringify(this.state.data, null, 1)}</pre>;
+  }
+}
+```
+
+## JSON Response - listEtfs()
 
 ```json
 {
@@ -99,6 +126,8 @@ Use Postman or `curl`.
 URL: https://etfdb.com/api/screener/
 
 Method: POST
+
+Payload: see below
 
 Headers:
 
