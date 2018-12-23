@@ -39,7 +39,7 @@ Live Demo: https://codesandbox.io/s/mpxy95mvx
 ```js
 import api from 'etfdb-api';
 
-class Eodhistoricaldata extends React.Component {
+class Etfdb extends React.Component {
   componentDidMount() {
     api.listHoldings('VGT').then(data => this.setState({ data }));
   }
